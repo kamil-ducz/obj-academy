@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ex_oop/1/CollectionTools.Core/bin
+/ex_oop/1/CollectionTools.Core/obj
+/ex_oop/1/CollectionTools.Tests/bin
+/ex_oop/1/CollectionTools.Tests/obj
+
+/ex_oop/1/.vs

@@ -1,9 +1,9 @@
 using NUnit.Framework;
-using Shuffle.Implementations;
+using CollectionTools.Implementations;
 using System;
 using System.Collections.Generic;
 
-namespace Shuffle.Tests
+namespace CollectionTools.Tests
 {
     public class ListOperationsTests
     {
