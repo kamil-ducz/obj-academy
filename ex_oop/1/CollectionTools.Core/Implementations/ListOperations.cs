@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Shuffle.Implementations
+namespace CollectionTools.Implementations
 {
     public static class ListOperations
     {
