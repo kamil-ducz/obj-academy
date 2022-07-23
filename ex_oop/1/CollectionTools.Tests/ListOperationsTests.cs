@@ -76,5 +76,38 @@ namespace CollectionTools.Tests
             Assert.AreEqual(target.Count, source.Count);
             Assert.AreNotEqual(target, source);
         }
+
+        [Test]
+        public void MaxWordsMethod_EmptyList()
+        {
+            var source = new List<string>();
+
+            Assert.AreEqual("We can see that provided list doesn't contain any sentences", ListOperations.MaxWords(source));
+        }
+
+        [Test]
+        public void MaxWordsMethod_OneSentence()
+        {
+            var source = new List<string>() { "this is first sentence" };
+
+            Assert.AreEqual("We can see that most words are found in sentence 1 and the value is 4: this is first sentence", 
+                ListOperations.MaxWords(source));
+        }
+
+        [Test]
+        public void MaxWordsMethod_TwoSentences()
+        {
+            var source = new List<string>() { "this is first sentence", "this is second one", "hey there" };
+            Assert.AreEqual("We can see that most words are found in sentence 1 and the value is 4: this is first sentence",
+    ListOperations.MaxWords(source));
+        }
+
+        [Test]
+        public void MaxWordsMethod_FiveSentence()
+        {
+            var source = new List<string>() { "this is first sentence", "this is second one", "hey there", "go for it baby", "I don't mind programming at all mate" };
+            Assert.AreEqual("We can see that most words are found in sentence 5 and the value is 7: I don't mind programming at all mate",
+    ListOperations.MaxWords(source));
+        }
     }
 }
