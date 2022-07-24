@@ -142,5 +142,37 @@ namespace CollectionTools.Tests
             Assert.AreEqual("There are no good pairs on the list", ListOperations.FindGoodPairs(source));
         }
 
+        [Test]
+        public void FibonacciMethod_FirstElement()
+        {
+            int source = 1;
+
+            Assert.AreEqual(1, ListOperations.Fibonacci(source));
+        }
+
+        [Test]
+        public void FibonacciMethod_SecondElement()
+        {
+            int source = 2;
+
+            Assert.AreEqual(1, ListOperations.Fibonacci(source));
+        }
+
+        [Test]
+        public void FibonacciMethod_ThirdElement()
+        {
+            int source = 3;
+
+            Assert.AreEqual(2, ListOperations.Fibonacci(source));
+        }
+
+        [Test]
+        public void FibonacciMethod_SeventhElement()
+        {
+            int source = 7;
+
+            Assert.AreEqual(13, ListOperations.Fibonacci(source));
+        }
+
     }
 }
