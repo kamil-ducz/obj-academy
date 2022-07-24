@@ -113,5 +113,32 @@ namespace CollectionTools.Implementations
 
             return Fibonacci(input-1) + Fibonacci(input-2);
         }
+
+        public static bool PalindromeCheck(string input)
+        {
+            if (input.Length == 0)
+            {
+                return false;
+            }
+
+            if (input.Length == 1)
+            {
+                return true;
+            }
+
+            if (input == Reverse(input))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private static string Reverse(string s)
+        {
+            char[] charArray = s.ToCharArray();
+            Array.Reverse(charArray);
+            return new string(charArray);
+        }
     }
 }
