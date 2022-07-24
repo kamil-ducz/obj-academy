@@ -174,5 +174,37 @@ namespace CollectionTools.Tests
             Assert.AreEqual(13, ListOperations.Fibonacci(source));
         }
 
+        [Test]
+        public void PalindromeCheckMethod_EmptyInput()
+        {
+            string source = "";
+
+            Assert.AreEqual(false, ListOperations.PalindromeCheck(source));
+        }
+
+        [Test]
+        public void PalindromeCheckMethod_SingleSign()
+        {
+            string source = "a";
+
+            Assert.AreEqual(true, ListOperations.PalindromeCheck(source));
+        }
+
+        [Test]
+        public void PalindromeCheckMethod_TwoSigns()
+        {
+            string source = "xx";
+
+            Assert.AreEqual(true, ListOperations.PalindromeCheck(source));
+        }
+
+        [Test]
+        public void PalindromeCheckMethod_EightSignWord()
+        {
+            string source = "pendrive";
+
+            Assert.AreEqual(false, ListOperations.PalindromeCheck(source));
+        }
+
     }
 }
