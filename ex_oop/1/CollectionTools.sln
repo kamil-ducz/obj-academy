@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionTools.Core", "Col
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionTools.Tests", "CollectionTools.Tests\CollectionTools.Tests.csproj", "{AFC508EE-E187-4E83-B837-BA35974CD1C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionTools.Console", "CollectionTools.Console\CollectionTools.Console.csproj", "{F8976DA9-773D-4691-9C56-16162701781F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionTools.Console.FirstNegativeNumber", "CollectionTools.Console.FirstNegativeNumber\CollectionTools.Console.FirstNegativeNumber.csproj", "{F8976DA9-773D-4691-9C56-16162701781F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
