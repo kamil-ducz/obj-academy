@@ -109,5 +109,38 @@ namespace CollectionTools.Tests
             Assert.AreEqual("We can see that most words are found in sentence 5 and the value is 7: I don't mind programming at all mate",
     ListOperations.MaxWords(source));
         }
+
+        [Test]
+        public void FindGoodPairsMethod_EmptyList()
+        {
+            List<int> source = new List<int>();
+
+            Assert.AreEqual("The list is empty or contains less than 2 elements", ListOperations.FindGoodPairs(source));
+        }
+
+        [Test]
+        public void FindGoodPairsMethod_OneElement()
+        {
+            List<int> source = new List<int>() { 7 };
+
+            Assert.AreEqual("The list is empty or contains less than 2 elements", ListOperations.FindGoodPairs(source));
+        }
+
+        [Test]
+        public void FindGoodPairsMethod_SixElements()
+        {
+            var source = new List<int> { 1, 2, 3, 1, 1, 3 };
+
+            Assert.AreEqual("There are 4 good pairs at indexes: (0,3), (0,4), (2,5), (3,4))", ListOperations.FindGoodPairs(source));
+        }
+
+        [Test]
+        public void FindGoodPairsMethod_SixElementsNoMatchingPairs()
+        {
+            var source = new List<int> { 1, 2, 3, 4, 5, 6 };
+
+            Assert.AreEqual("There are no good pairs on the list", ListOperations.FindGoodPairs(source));
+        }
+
     }
 }
