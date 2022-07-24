@@ -10,9 +10,10 @@ namespace OOP.Core.Models
         public RollingDice()
         {
             random = new Random();
+            sidesCount = 6;
         }
 
-        public RollingDice(int sidesCount = 6) : this()
+        public RollingDice(int sidesCount) : this()
         {
             this.sidesCount = sidesCount;
         }
@@ -29,7 +30,7 @@ namespace OOP.Core.Models
 
         public string ShowRollResult()
         {
-            return $"Rolling a dice with { this.sidesCount } sides";
+            return $"Rolling a dice with { this.sidesCount } sides...The result is: { this.Roll() }";
         }
     }
 }
