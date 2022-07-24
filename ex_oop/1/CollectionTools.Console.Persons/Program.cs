@@ -1,6 +1,7 @@
 ﻿using CollectionTools.Console.Persons.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 const string NAME_REGEX = "^[A-Z]{1}[A-Za-z]{1,}$";
@@ -36,8 +37,10 @@ for(int i = 0; i < peopleCount; i++)
 
 Console.WriteLine("\nPeople stored on the list are: \n");
 
-for (int i = 0; i < people.Count; i++)
+var sortedPeople = people.OrderByDescending(o => o.Name).ToList();
+
+for (int i = 0; i < sortedPeople.Count; i++)
 {
     Console.Write((i+1) + ". ");
-    Console.WriteLine("Name: " + people[i].Name + ", age: " + people[i].Age);
+    Console.WriteLine("Name: " + sortedPeople[i].Name + ", age: " + sortedPeople[i].Age);
 }
