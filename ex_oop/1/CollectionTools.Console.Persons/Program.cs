@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 
 const string NAME_REGEX = "^[A-Z]{1}[A-Za-z]{1,}$";
-const string AGE_REGEX = "^[0-9]{2}$";
+const string AGE_REGEX = "^[0-9]{1,2}$";
 
 Console.WriteLine("How many persons would you like to input?");
 var peopleCount = Convert.ToInt32(Console.ReadLine());
