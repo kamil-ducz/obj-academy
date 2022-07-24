@@ -101,5 +101,17 @@ namespace CollectionTools.Implementations
 
             return sb.ToString();
         }
+
+        public static int Fibonacci(int input)
+        {
+            // we are assuming initial elements of Fibonacci sequence are: 1, 1, 2 instead of 0, 1, 1
+
+            if (input == 1 || input == 2)
+            {
+                return 1;
+            }
+
+            return Fibonacci(input-1) + Fibonacci(input-2);
+        }
     }
 }
