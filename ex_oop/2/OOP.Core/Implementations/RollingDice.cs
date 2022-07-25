@@ -2,7 +2,7 @@
 
 namespace OOP.Core.Models
 {
-    public class RollingDice
+    public class RollingDice : IDice
     {
         private int sidesCount;
         private Random random;
