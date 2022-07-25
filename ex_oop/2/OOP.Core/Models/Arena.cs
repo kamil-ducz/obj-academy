@@ -23,7 +23,7 @@ namespace OOP.Core.Models
 
         private void DisplayArenaWelcomeMessage()
         {
-            Console.WriteLine($"Welcome to the arena { this.Name }! The fight begins...");
+            Console.WriteLine($"Welcome to the arena { this.Name }! The fight begins...\n");
         }
 
         public void Render()
@@ -31,13 +31,13 @@ namespace OOP.Core.Models
             Console.Clear();
 
             DisplayArenaWelcomeMessage();
-            Console.WriteLine("Players are: ");
+            Console.WriteLine("Players are: \n");
 
-            Console.WriteLine(Hero1.ShowHealthBar(Hero1.MaxHealth));
-            Console.WriteLine(Hero1.DisplayHeroName());
-            Console.WriteLine("\n");
-            Console.WriteLine(Hero2.ShowHealthBar(Hero2.MaxHealth));
-            Console.WriteLine(Hero2.DisplayHeroName());
+            Console.WriteLine(Hero1.ShowHealthBar(Hero1.Health));
+            Console.WriteLine(Hero1.DisplayHeroName() + "\n");
+
+            Console.WriteLine(Hero2.ShowHealthBar(Hero2.Health));
+            Console.WriteLine(Hero2.DisplayHeroName() + "\n");
         }
 
         public void Fight()

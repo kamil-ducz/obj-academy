@@ -82,7 +82,7 @@ namespace OOP.Core.Models
             if (hit > 0)
             {
                 enemy.Defend(hit);
-                Console.WriteLine($"{ this.Name } attacks { enemy } with a hit worth { hit } hp!");
+                Console.WriteLine($"{ this.Name } attacks { enemy.Name } with a hit worth { hit } hp!");
             }
         }
     }
