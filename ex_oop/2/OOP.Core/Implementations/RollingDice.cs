@@ -25,7 +25,7 @@ namespace OOP.Core.Models
 
         public int Roll()
         {
-            return random.Next(1, sidesCount);
+            return random.Next(sidesCount)+1;
         }
 
         public string ShowRollResult()

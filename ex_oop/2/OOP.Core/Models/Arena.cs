@@ -30,19 +30,18 @@ namespace OOP.Core.Models
         {
             Console.Clear();
 
-            DisplayArenaWelcomeMessage();
             Console.WriteLine("Players are: \n");
+            Hero1.ShowHealthBar();
+            Console.WriteLine();
+            Hero2.ShowHealthBar();
+            Console.WriteLine();
+            DisplayArenaWelcomeMessage();
 
-            Console.WriteLine(Hero1.ShowHealthBar(Hero1.Health));
-            Console.WriteLine(Hero1.DisplayHeroName() + "\n");
-
-            Console.WriteLine(Hero2.ShowHealthBar(Hero2.Health));
-            Console.WriteLine(Hero2.DisplayHeroName() + "\n");
         }
 
         public void Fight()
         {
-            var whoIsFirst = new Random().Next(1, 2);
+            var whoIsFirst = new Random().Next(2)+1;
 
             if (whoIsFirst == 1)
             {
@@ -55,10 +54,38 @@ namespace OOP.Core.Models
                 this.SecondAttacker = Hero1;
             }
 
-            while (Hero1.IsAlive() && Hero2.IsAlive())
+            Console.WriteLine("-----------------------------------------------------\n");
+            while (FirstAttacker.IsAlive() && SecondAttacker.IsAlive())
             {
                 FirstAttacker.Attack(SecondAttacker);
+                FirstAttacker.ShowHealthBar();
+                Console.WriteLine();
+                SecondAttacker.ShowHealthBar();
+                Console.WriteLine();
+
+                Console.ReadLine();
+
+                if (!SecondAttacker.IsAlive())
+                {
+                    Console.WriteLine($"{ SecondAttacker.Name } is dead.");
+                    break;
+                }
+
                 SecondAttacker.Attack(FirstAttacker);
+                FirstAttacker.ShowHealthBar();
+                Console.WriteLine();
+                SecondAttacker.ShowHealthBar();
+                Console.WriteLine();
+
+                Console.ReadLine();
+
+                if (!FirstAttacker.IsAlive())
+                {
+                    Console.WriteLine($"{ FirstAttacker.Name } is dead.");
+                    break;
+                }
+
+                Console.WriteLine("-----------------------------------------------------\n");
             }
         }
     }
