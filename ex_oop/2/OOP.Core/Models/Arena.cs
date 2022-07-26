@@ -23,26 +23,25 @@ namespace OOP.Core.Models
 
         private void DisplayArenaWelcomeMessage()
         {
-            Console.WriteLine($"Welcome to the arena { this.Name }! The fight begins...");
+            Console.WriteLine($"Welcome to the arena { this.Name }! The fight begins...\n");
         }
 
         public void Render()
         {
             Console.Clear();
 
+            Console.WriteLine("Players are: \n");
+            Hero1.ShowHealthBar();
+            Console.WriteLine();
+            Hero2.ShowHealthBar();
+            Console.WriteLine();
             DisplayArenaWelcomeMessage();
-            Console.WriteLine("Players are: ");
 
-            Console.WriteLine(Hero1.ShowHealthBar(Hero1.MaxHealth));
-            Console.WriteLine(Hero1.DisplayHeroName());
-            Console.WriteLine("\n");
-            Console.WriteLine(Hero2.ShowHealthBar(Hero2.MaxHealth));
-            Console.WriteLine(Hero2.DisplayHeroName());
         }
 
         public void Fight()
         {
-            var whoIsFirst = new Random().Next(1, 2);
+            var whoIsFirst = new Random().Next(2)+1;
 
             if (whoIsFirst == 1)
             {
@@ -55,10 +54,38 @@ namespace OOP.Core.Models
                 this.SecondAttacker = Hero1;
             }
 
-            while (Hero1.IsAlive() && Hero2.IsAlive())
+            Console.WriteLine("-----------------------------------------------------\n");
+            while (FirstAttacker.IsAlive() && SecondAttacker.IsAlive())
             {
                 FirstAttacker.Attack(SecondAttacker);
+                FirstAttacker.ShowHealthBar();
+                Console.WriteLine();
+                SecondAttacker.ShowHealthBar();
+                Console.WriteLine();
+
+                Console.ReadLine();
+
+                if (!SecondAttacker.IsAlive())
+                {
+                    Console.WriteLine($"{ SecondAttacker.Name } is dead.");
+                    break;
+                }
+
                 SecondAttacker.Attack(FirstAttacker);
+                FirstAttacker.ShowHealthBar();
+                Console.WriteLine();
+                SecondAttacker.ShowHealthBar();
+                Console.WriteLine();
+
+                Console.ReadLine();
+
+                if (!FirstAttacker.IsAlive())
+                {
+                    Console.WriteLine($"{ FirstAttacker.Name } is dead.");
+                    break;
+                }
+
+                Console.WriteLine("-----------------------------------------------------\n");
             }
         }
     }

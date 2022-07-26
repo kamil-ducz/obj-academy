@@ -1,28 +1,10 @@
 ﻿using OOP.Core.Models;
 
-Console.WriteLine("How many sides should dice have? Acceptable values are 2-20 and 100: Input: ");
-int result;
+Hero hero1 = new Hero(35, "Magmus", 30, 6, 4, new RollingDice(8));
+Hero hero2 = new Hero(35, "Fasanus", 30, 4, 3, new RollingDice(10));
 
-while(true)
-{
-    var sides = Console.ReadLine();
-    if(sides == null 
-        || int.TryParse(sides, out var side) == false 
-        || !(Convert.ToInt32(sides) >= 2 && Convert.ToInt32(sides) <= 20 ^ Convert.ToInt32(sides) == 100))
-    {
-        Console.WriteLine("Wrong input");
-        continue;
-    }
+Arena arena = new Arena("Coloseum", hero1, hero2, hero1, hero2, "Welcome to the Coloseum. Let Gods decide your fate.");
 
-    result = Convert.ToInt32(sides);
-    break;
-}
+arena.Render();
 
-RollingDice dice = new RollingDice(result);
-RollingDice diceDefault = new RollingDice();
-
-Console.WriteLine($"Dice with { dice.GetSidesCount() } sides successfully created.");
-Console.WriteLine($"Default dice with { diceDefault.GetSidesCount() } sides successfully created.");
-
-Console.WriteLine(dice.ShowRollResult());
-Console.WriteLine(diceDefault.ShowRollResult());
+arena.Fight();

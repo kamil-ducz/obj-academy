@@ -43,16 +43,16 @@ namespace OOP.Core.Models
             return true;
         }
 
-        public string ShowHealthBar(int health)
+        public void ShowHealthBar()
         {
             StringBuilder healthBar = new StringBuilder();
 
-            for (int i = 0; i < health; i++)
+            for (int i = 0; i < this.Health; i++)
             {
                 healthBar.Append("#");
             }
 
-            return healthBar.ToString();
+            Console.WriteLine(healthBar.ToString() + "\n" + DisplayHeroName());
         }
 
         public void Defend(int hit)
@@ -63,11 +63,6 @@ namespace OOP.Core.Models
             {
                 Health -= injury;
                 Console.WriteLine($"{ this.Name } takes { injury } hp damage!");
-                if (Health <= 0)
-                {
-                    Health = 0;
-                    Console.WriteLine($"{ this.Name } is dead.");
-                }
             }
             if (injury <= 0)
             {
@@ -81,8 +76,8 @@ namespace OOP.Core.Models
 
             if (hit > 0)
             {
+                Console.WriteLine($"{ this.Name } attacks { enemy.Name } with a hit worth { hit } hp!");
                 enemy.Defend(hit);
-                Console.WriteLine($"{ this.Name } attacks { enemy } with a hit worth { hit } hp!");
             }
         }
     }
