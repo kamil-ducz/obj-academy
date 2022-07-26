@@ -2,19 +2,15 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/ex_oop/1/CollectionTools.Core/bin
-/ex_oop/1/CollectionTools.Core/obj
-/ex_oop/1/CollectionTools.Tests/bin
-/ex_oop/1/CollectionTools.Tests/obj
-/ex_oop/1/CollectionTools.Console.FirstNegativeNumber/obj
-/ex_oop/1/CollectionTools.Console.FirstNegativeNumber/bin
-/ex_oop/1/CollectionTools.Console.Persons/obj
-/ex_oop/1/CollectionTools.Console.Persons/bin
-
-/ex_oop/2/OOP.Core/obj
-/ex_oop/2/OOP.Core/bin
-/ex_oop/2/OOP.Console/obj
-/ex_oop/2/OOP.Console/bin
-
-/ex_oop/1/.vs
-/ex_oop/2/.vs
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+.vs/
