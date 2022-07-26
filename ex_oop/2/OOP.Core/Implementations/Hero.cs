@@ -1,9 +1,10 @@
-﻿using System;
+﻿using OOP.Core.Interfaces;
+using System;
 using System.Text;
 
 namespace OOP.Core.Models
 {
-    public class Hero
+    public class Hero : IHero
     {
         public int Health { get; set; }
         public string Name { get; set; }
