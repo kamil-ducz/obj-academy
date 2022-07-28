@@ -1,4 +1,7 @@
 ﻿using PseudoNotepad.Core.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 List<Note> database = new List<Note>();
 
@@ -14,9 +17,9 @@ while (true)
     Console.WriteLine("6. Close the application");
 
     var userInput = Console.ReadLine();
-    if (userInput == null 
-        || !int.TryParse(userInput, out int id) 
-        || (Convert.ToInt32(userInput) < 1 
+    if (userInput == null
+        || !int.TryParse(userInput, out int id)
+        || (Convert.ToInt32(userInput) < 1
         || Convert.ToInt32(userInput) > 6))
     {
         Console.WriteLine("Wrong input. Try again.");
@@ -35,7 +38,7 @@ while (true)
                     break;
                 }
 
-                foreach( var note in database)
+                foreach (var note in database)
                 {
                     Console.WriteLine(note.Title);
                 }
@@ -47,7 +50,7 @@ while (true)
 
         case 2:
             {
-                while(true)
+                while (true)
                 {
                     Console.WriteLine("Enter a title to open a note or press q to exit this option: ");
                     var titleToOpen = Console.ReadLine();
@@ -134,7 +137,7 @@ while (true)
                 Environment.Exit(0);
                 break;
             }
-        
+
         default: continue;
     }
 }
