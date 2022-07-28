@@ -9,7 +9,7 @@ while (true)
 {
     Console.Clear();
     Console.WriteLine("What would you like to do?");
-    Console.WriteLine("1. Show all database titles from the list");
+    Console.WriteLine("1. Show all titles from the list");
     Console.WriteLine("2. Open a note from the list");
     Console.WriteLine("3. Add a note to the list");
     Console.WriteLine("4. Remove a note from the list");
@@ -52,7 +52,14 @@ while (true)
             {
                 while (true)
                 {
-                    Console.WriteLine("Enter a title to open a note or press q to exit this option: ");
+                    if (database.Count == 0)
+                    {
+                        Console.WriteLine("There are no notes, yet");
+                        Console.ReadKey();
+                        break;
+                    }
+
+                    Console.WriteLine("Enter a title to open a note or q to exit this option: ");
                     var titleToOpen = Console.ReadLine();
                     if (!database.Any(n => n.Title == titleToOpen))
                     {
@@ -94,11 +101,26 @@ while (true)
 
         case 4:
             {
+                if (database.Count == 0)
+                {
+                    Console.WriteLine("There are no notes, yet");
+                    Console.ReadKey();
+                    break;
+                }
+
                 Console.WriteLine("Please type in note title to remove a note: ");
                 var titleToDelete = Console.ReadLine();
 
                 if (titleToDelete is not null)
                 {
+                    if (!database.Any(n => n.Title == titleToDelete))
+                    {
+                        Console.WriteLine($"Note with title { titleToDelete } doesn't exist.");
+                        Console.ReadKey();
+
+                        continue;
+                    }
+
                     var noteToRemove = database.Find(n => n.Title == titleToDelete);
                     database.Remove(noteToRemove);
                     Console.WriteLine($"Note with title { titleToDelete } removed.");
@@ -113,6 +135,13 @@ while (true)
 
         case 5:
             {
+                if (database.Count == 0)
+                {
+                    Console.WriteLine("There are no notes, yet");
+                    Console.ReadKey();
+                    break;
+                }
+
                 Console.WriteLine("Please type in a note title to search: ");
                 var titleToSearch = Console.ReadLine();
                 if (titleToSearch is not null
