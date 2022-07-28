@@ -31,17 +31,24 @@ while (true)
     {
         case 1:
             {
-                if (database.Count == 0)
+                if (database is not null)
                 {
-                    Console.WriteLine("There are no notes, yet");
-                    Console.ReadKey();
-                    break;
+                    if (database.Count == 0)
+                    {
+                        Console.WriteLine("There are no notes, yet");
+                        Console.ReadKey();
+                        break;
+                    }
                 }
 
-                foreach (var note in database)
+                if (database is not null)
                 {
-                    Console.WriteLine(note.Title);
+                    foreach (var note in database)
+                    {
+                        Console.WriteLine(note.Title);
+                    }
                 }
+
 
                 Console.ReadKey();
 
@@ -52,30 +59,41 @@ while (true)
             {
                 while (true)
                 {
-                    if (database.Count == 0)
+                    if (database is not null)
                     {
-                        Console.WriteLine("There are no notes, yet");
-                        Console.ReadKey();
-                        break;
+                        if (database.Count == 0)
+                        {
+                            Console.WriteLine("There are no notes, yet");
+                            Console.ReadKey();
+                            break;
+                        }
                     }
 
                     Console.WriteLine("Enter a title to open a note or q to exit this option: ");
-                    var titleToOpen = Console.ReadLine();
-                    if (!database.Any(n => n.Title == titleToOpen))
+                    string? titleToOpen = Console.ReadLine();
+                    if (database is not null && !database.Any(n => n.Title == titleToOpen))
                     {
                         if (titleToOpen == "q")
                         {
                             break;
                         }
 
-                        Console.WriteLine($"Note with title { titleToOpen } doesn't exist. Try again or press q.");
+                        Console.WriteLine($"Note with title { titleToOpen } doesn't exist.");
                         continue;
                     }
 
+                    if (database is not null)
+                    {
+                        if (database.Find(n => n.Title == titleToOpen) is not null)
+                        {
+                            var noteContent = database.First(n => n.Title == titleToOpen).Content;
+                            Console.WriteLine(noteContent);
+                            Console.ReadKey();
+                        }
 
-                    Console.WriteLine(database.Find(n => n.Title == titleToOpen).Content);
+                    }
 
-                    Console.ReadKey();
+
 
                     continue;
                 }
@@ -91,7 +109,7 @@ while (true)
                 Console.WriteLine("Please write your note and hit ENTER to add it: ");
                 var contentToInsert = Console.ReadLine();
 
-                if (titleToInsert is not null && contentToInsert is not null && titleToInsert.Length > 0)
+                if (database is not null && titleToInsert is not null && contentToInsert is not null && titleToInsert.Length > 0)
                 {
                     database.Add(new Note(titleToInsert, contentToInsert, createdAt));
                 }
@@ -101,17 +119,20 @@ while (true)
 
         case 4:
             {
-                if (database.Count == 0)
+                if (database is not null)
                 {
-                    Console.WriteLine("There are no notes, yet");
-                    Console.ReadKey();
-                    break;
+                    if (database.Count == 0)
+                    {
+                        Console.WriteLine("There are no notes, yet");
+                        Console.ReadKey();
+                        break;
+                    }
                 }
 
                 Console.WriteLine("Please type in note title to remove a note: ");
                 var titleToDelete = Console.ReadLine();
 
-                if (titleToDelete is not null)
+                if (titleToDelete is not null && database is not null)
                 {
                     if (!database.Any(n => n.Title == titleToDelete))
                     {
@@ -122,40 +143,52 @@ while (true)
                     }
 
                     var noteToRemove = database.Find(n => n.Title == titleToDelete);
-                    database.Remove(noteToRemove);
-                    Console.WriteLine($"Note with title { titleToDelete } removed.");
-                    Console.ReadKey();
-
+                    if (noteToRemove is not null)
+                    {
+                        database.Remove(noteToRemove);
+                        Console.WriteLine($"Note with title { titleToDelete } removed.");
+                        Console.ReadKey();
+                    }
                     continue;
                 }
-
-
                 continue;
             }
 
         case 5:
             {
-                if (database.Count == 0)
+                if (database is not null)
                 {
-                    Console.WriteLine("There are no notes, yet");
-                    Console.ReadKey();
-                    break;
+                    if (database.Count == 0)
+                    {
+                        Console.WriteLine("There are no notes, yet");
+                        Console.ReadKey();
+
+                        break;
+                    }
                 }
 
                 Console.WriteLine("Please type in a note title to search: ");
                 var titleToSearch = Console.ReadLine();
-                if (titleToSearch is not null
-                    && database.Any(n => n.Title == titleToSearch))
-                {
-                    var foundNote = database.Find(n => n.Title == titleToSearch);
 
-                    Console.WriteLine("Found: " + foundNote.Title);
+                if (database is not null)
+                {
+                    if (titleToSearch is not null
+                                        && database.Any(n => n.Title == titleToSearch))
+                    {
+                        var foundNote = database.Find(n => n.Title == titleToSearch);
+
+                        if (foundNote is not null)
+                        {
+                            Console.WriteLine("Found: " + foundNote.Title);
+                            Console.ReadKey();
+                            continue;
+                        }
+                    }
+
+                    Console.WriteLine($"Not found anything with title {titleToSearch }");
+
                     Console.ReadKey();
                 }
-
-                Console.WriteLine($"Not found anything with title {titleToSearch }");
-
-                Console.ReadKey();
 
                 continue;
             }
@@ -164,6 +197,7 @@ while (true)
             {
                 Console.WriteLine("Thank you for using the app. See you :)");
                 Environment.Exit(0);
+
                 break;
             }
 
